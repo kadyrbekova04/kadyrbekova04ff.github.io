@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: none;
+        }
+        body {
+            background: linear-gradient(rgb(18, 54, 151), #1ff);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calculator {
+            width: 300px;
+            height: 500px;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            overflow: hidden;
+            color: #fff;
+            filter: blur(0.5px);
+        }
+        #display {
+            width: 300px;
+            height: 200px;
+            font-size: 50px;
+            text-align: right;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .button {
+            display: flex;
+            width: 72px;
+            height: 72px;
+            font-size: 35px;
+            font-weight: 900;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <div class="calculator" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500">
+        <form name="form"><input type="text" name="input" id="display" readonly></form>
+        <div class="buttons">
+            <div class="button" id="minus" onclick="insert('-')">-</div>
+            <div class="button" id="plus" onclick="insert('+')">+</div>
+            <div class="button" id="multi" onclick="insert('*')">*</div>
+            <div class="button" id="div" onclick="insert('/')">/</div>
+            <div class="button" id="seven" onclick="insert('7')">7</div>
+            <div class="button" id="eight" onclick="insert('8')">8</div>
+            <div class="button" id="nine" onclick="insert('9')">9</div>
+            <div class="button" id="clear"><</div>
+            <div class="button" id="four" onclick="insert('4')">4</div>
+            <div class="button" id="five" onclick="insert('5')">5</div>
+            <div class="button" id="six" onclick="insert('6')">6</div>
+            <div class="button"></div>
+            <div class="button" id="one" onclick="insert('1')">1</div>
+            <div class="button" id="two" onclick="insert('2')">2</div>
+            <div class="button" id="three" onclick="insert('3')">3</div>
+            <div class="button" id="eqally">=</div>
+        </div>
+    </div>
+    <script>
+        let inp = document.getElementById('display')
+        function insert(e) {
+            inp.value =
+            inp.value + e
+        }
+        document.getElementById('clear').addEventListener('click', ()=> {
+            inp.value = ''
+        })
+        eqally.addEventListener('click', () => {
+            let exp = inp.value;
+            if (exp) {
+                inp.value = eval(exp)
+            }
+        })
+        VanillaTilt.init(document.querySelector(".calculator"), {
+        max: 5,
+        speed: 400
+        });
+    
+        VanillaTilt.init(document.querySelectorAll(".calculator"));
+    </script>
+</body>
+</html>
